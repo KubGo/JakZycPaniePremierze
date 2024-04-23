@@ -151,8 +151,9 @@ public class Praca {
                         new int[]{300, 400, 500},
                         1);
             }default -> {
-                System.out.println("Nie ma takiej pracy");
-                throw new IllegalArgumentException();
+                return new Praca("Bezrobotny",
+                        new int[]{200, 200, 200},
+                        1);
             }
         }
     }
