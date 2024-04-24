@@ -1,7 +1,6 @@
 package com.kubago.jakzycpaniepremierze.models;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -31,11 +30,11 @@ public class Postac {
     /**
      * Mapa dóbr posiadanych przez postać
      */
-    private HashMap<String,Dobro> listaDobr;
+    private HashMap<String,Dobro> mapaDobr;
     /**
      * Mapa pożyczek posiadanych przez postać
      */
-    private HashMap<String,Pozyczka> listaPozyczek;
+    private HashMap<String,Pozyczka> mapaPozyczek;
     /**
      * Lotek użytkownika
      */
@@ -61,22 +60,22 @@ public class Postac {
             throw new Exception("Nie można kupić. Niewystarczająca ilość środków.");
         }
         this.dostepneSrodki =- dobro.getCena();
-        listaDobr.put(dobro.getNazwa(), dobro);
+        mapaDobr.put(dobro.getNazwa(), dobro);
     }
     public void sprzedajDobro(String nazwa){
-        if (!listaDobr.containsKey(nazwa)){
+        if (!mapaDobr.containsKey(nazwa)){
             throw new IllegalArgumentException("Ta postać nie ma takiego dobra.");
         }
-        Dobro dobro = listaDobr.remove(nazwa);
+        Dobro dobro = mapaDobr.remove(nazwa);
         this.dostepneSrodki += dobro.getCena_sprzedazy();
     }
 
     public void dodajPozyczke(Pozyczka pozyczka){
-        listaPozyczek.put(pozyczka.getName(), pozyczka);
+        mapaPozyczek.put(pozyczka.getName(), pozyczka);
         this.dostepneSrodki += pozyczka.getKwota();
     }
     public void usunPozyczke(String name){
-        listaPozyczek.remove(name);
+        mapaPozyczek.remove(name);
     }
     public void postawLotka(int numer){
         this.lotek.dodajNumer(numer);
@@ -90,8 +89,8 @@ public class Postac {
         return this.dostepneSrodki < 0;
     }
     public boolean checkWinCondition(){
-        if (listaPozyczek.isEmpty()){
-            for ( Dobro dobro: listaDobr.values()){
+        if (mapaPozyczek.isEmpty()){
+            for ( Dobro dobro: mapaDobr.values()){
                 if (dobro instanceof Dobro.DobroMieszkalne && ((Dobro.DobroMieszkalne) dobro).isWynajmowane()){
                     return true;
                 }
@@ -106,13 +105,13 @@ public class Postac {
 
     private boolean uaktualnijSrodkiNaNowyMiesiac(){
         this.dostepneSrodki += praca.wyplata();
-        for (Dobro dobro: this.listaDobr.values()){
+        for (Dobro dobro: this.mapaDobr.values()){
             this.dostepneSrodki -= dobro.getKoszt_utrzymania();
         }
-        for (Pozyczka pozyczka : this.listaPozyczek.values()){
+        for (Pozyczka pozyczka : this.mapaPozyczek.values()){
             this.dostepneSrodki -= pozyczka.getRata();
             if (pozyczka.zaplacRate()){
-                this.listaPozyczek.remove(pozyczka.getName());
+                this.mapaPozyczek.remove(pozyczka.getName());
             }
         }
         return this.checkLoss();
