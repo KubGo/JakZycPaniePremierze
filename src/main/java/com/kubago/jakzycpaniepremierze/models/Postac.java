@@ -17,5 +17,11 @@ public class Postac {
         this.name = name;
         this.path_to_image = path_to_image;
     }
+    public void setPraca(Praca praca) {
+        this.praca = praca;
+    }
+    public void strataPracy(){
+        this.praca = praca.wybierz_prace(Prace.BEZROBOTNY);
+    }
 
 }
