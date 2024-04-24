@@ -17,7 +17,8 @@ enum Prace {
 
     CELEBRYTA,
     POLITYK,
-    NAUCZYCIEL
+    NAUCZYCIEL,
+    BEZROBOTNY
 }
 
 /**

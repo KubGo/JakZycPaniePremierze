@@ -7,11 +7,19 @@ import java.util.List;
  * Clasa do przechowywania numerów do losowania lotka i jego logiki
  */
 public class Lotek {
-
+    public final Integer KWOTA_WYGRANEJ = 2000;
     /**
      * Numery postawione w lotku
      */
     private ArrayList<Integer> numery;
+
+
+    /**
+     * Stwórz pusty Lotek dla gracza
+     */
+    public Lotek(){
+        this(new ArrayList<>());
+    }
 
     /**
      * @param numery Lista numerów do stworzenia lotka
@@ -58,5 +66,8 @@ public class Lotek {
             }
         }
         return false;
+    }
+    public void reset(){
+        this.numery = new ArrayList<>();
     }
 }
