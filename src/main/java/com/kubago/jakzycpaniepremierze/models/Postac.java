@@ -12,6 +12,7 @@ public class Postac {
     private HashMap<String,Dobro> listaDobr;
     private HashMap<String,Pozyczka> listaPozyczek;
     private final Lotek lotek = new Lotek();
+    private int winningMonths = 0;
 
 
     public Postac(String name, Path path_to_image) {
@@ -53,5 +54,18 @@ public class Postac {
         boolean result = lotek.sprawdzWygrana(number);
         lotek.reset();
         return result;
+    }
+    public boolean checkLoss(){
+        return this.dostepneSrodki < 0;
+    }
+    public boolean checkWinCondition(){
+        if (listaPozyczek.isEmpty()){
+            for ( Dobro dobro: listaDobr.values()){
+                if (dobro instanceof Dobro.DobroMieszkalne && ((Dobro.DobroMieszkalne) dobro).isWynajmowane()){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
