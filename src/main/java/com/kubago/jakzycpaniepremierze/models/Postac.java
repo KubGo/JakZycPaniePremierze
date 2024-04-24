@@ -39,4 +39,12 @@ public class Postac {
         this.dostepneSrodki += dobro.getCena_sprzedazy();
     }
 
+    public void dodajPozyczke(Pozyczka pozyczka){
+        listaPozyczek.put(pozyczka.getName(), pozyczka);
+        this.dostepneSrodki += pozyczka.getKwota();
+    }
+    public void usunPozyczke(String name){
+        listaPozyczek.remove(name);
+    }
+
 }
