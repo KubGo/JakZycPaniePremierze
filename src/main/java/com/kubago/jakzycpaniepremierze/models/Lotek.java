@@ -7,7 +7,7 @@ import java.util.List;
  * Clasa do przechowywania numerów do losowania lotka i jego logiki
  */
 public class Lotek {
-
+    public final Integer KWOTA_WYGRANEJ = 2000;
     /**
      * Numery postawione w lotku
      */
