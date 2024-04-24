@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Postac {
+    private final Integer DZIENNY_WYDATEK = 10;
     private String name;
     private Path path_to_image;
     private int dostepneSrodki;
@@ -67,5 +68,35 @@ public class Postac {
             }
         }
         return false;
+    }
+
+    private void dzienneWydatki(){
+        this.dostepneSrodki -= this.DZIENNY_WYDATEK;
+    }
+
+    private boolean uaktualnijSrodkiNaNowyMiesiac(){
+        this.dostepneSrodki += praca.wyplata();
+        for (Dobro dobro: this.listaDobr.values()){
+            this.dostepneSrodki -= dobro.getKoszt_utrzymania();
+        }
+        for (Pozyczka pozyczka : this.listaPozyczek.values()){
+            this.dostepneSrodki -= pozyczka.getRata();
+            if (pozyczka.zaplacRate()){
+                this.listaPozyczek.remove(pozyczka.getName());
+            }
+        }
+        return this.checkLoss();
+    }
+
+    public void dodajKwote(int kwota){
+        this.dostepneSrodki += kwota;
+    }
+
+    public void dodajKwote(int kwota, int n_razy){
+        this.dostepneSrodki += (kwota * n_razy);
+    }
+    public boolean odejmijKwote(int kwota){
+        this.dostepneSrodki -= kwota;
+        return this.checkLoss();
     }
 }
