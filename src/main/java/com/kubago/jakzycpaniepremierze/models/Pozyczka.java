@@ -74,4 +74,7 @@ public class Pozyczka {
     public int getRata() {
         return rata;
     }
+    public String getName(){
+        return this.name;
+    }
 }
