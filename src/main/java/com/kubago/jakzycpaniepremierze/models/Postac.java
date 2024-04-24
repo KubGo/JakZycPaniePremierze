@@ -11,7 +11,7 @@ public class Postac {
     private Praca praca;
     private HashMap<String,Dobro> listaDobr;
     private HashMap<String,Pozyczka> listaPozyczek;
-    private Lotek lotek;
+    private final Lotek lotek = new Lotek();
 
 
     public Postac(String name, Path path_to_image) {
@@ -46,5 +46,12 @@ public class Postac {
     public void usunPozyczke(String name){
         listaPozyczek.remove(name);
     }
-
+    public void postawLotka(int numer){
+        this.lotek.dodajNumer(numer);
+    }
+    public boolean sprawdzLotka(int number){
+        boolean result = lotek.sprawdzWygrana(number);
+        lotek.reset();
+        return result;
+    }
 }
