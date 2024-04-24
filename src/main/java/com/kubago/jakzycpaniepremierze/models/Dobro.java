@@ -1,7 +1,6 @@
 package com.kubago.jakzycpaniepremierze.models;
 
 import java.util.HashMap;
-import java.util.HashSet;
 
 /**
  * Podstawowa klasa Dobra które można zakupić w grze
@@ -82,6 +81,65 @@ public class Dobro {
         public DobroLuksusowe(int cena, HashMap<Integer, Integer> ceny_sprzedazy) {
             super(cena, 0, 0);
             this.ceny_sprzedazy = ceny_sprzedazy;
+        }
+    }
+
+    /**
+     * Klasa dobra mieszkalnego które można dodatkowo wynająć
+     */
+    public class DobroMieszkalne extends Dobro{
+        /**
+         * Jeśli true, wynajmowane
+         */
+        private boolean wynajmowane;
+        /**
+         * Zysk z wynajmu mieszkania
+         */
+        private int zyskWynajmu;
+
+        /**
+         * @param cena Koszt zakupu
+         * @param koszt_utrzymania Miesięczny koszt utrzymania
+         * @param cena_sprzedazy Cena sprzedaży
+         * @param bonusy Lista bonusów gwarantowanych przez dobro
+         */
+        public DobroMieszkalne(int cena, int koszt_utrzymania, int cena_sprzedazy, String[] bonusy) {
+            super(cena, koszt_utrzymania, cena_sprzedazy, bonusy);
+            this.wynajmowane = false;
+            this.zyskWynajmu = 0;
+        }
+
+        /**
+         * @param cena Koszt zakupu
+         * @param koszt_utrzymania Miesięczny koszt utrzymania
+         * @param cena_sprzedazy Cena sprzedaży
+         * @param bonusy Lista bonusów gwarantowanych przez dobro
+         * @param wynajmowane true, jeśli mieszkanie wynajmowane
+         * @param zyskWynajmu Zysk związany z wynajmem
+         */
+        public DobroMieszkalne(int cena, int koszt_utrzymania, int cena_sprzedazy, String[] bonusy, boolean wynajmowane, int zyskWynajmu) {
+            super(cena, koszt_utrzymania, cena_sprzedazy, bonusy);
+            this.wynajmowane = wynajmowane;
+            this.zyskWynajmu = zyskWynajmu;
+        }
+
+        /**
+         * @return Koszt utrzymania pomniejszony o zwyski z wynajmu, jeśli takie są
+         */
+        @Override
+        public int getKoszt_utrzymania() {
+            if (wynajmowane){
+                return super.getKoszt_utrzymania() - this.zyskWynajmu;
+            }
+            return super.getKoszt_utrzymania();
+        }
+
+        /**
+         * Pozbądź się najemcy i ustaw zysk na zero
+         */
+        public void usunNajemce(){
+            this.wynajmowane = false;
+            this.zyskWynajmu = 0;
         }
     }
 }
