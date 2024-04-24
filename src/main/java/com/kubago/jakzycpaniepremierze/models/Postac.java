@@ -4,15 +4,45 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Klasa postaci w którą wciela sie gracz
+ */
 public class Postac {
+    /**
+     * Stały dzienny koszt przeżycia
+     */
     private final Integer DZIENNY_WYDATEK = 10;
+    /**
+     * Nazwa postaci
+     */
     private String name;
+    /**
+     * Ścieżka do obrazu z postacią
+     */
     private Path path_to_image;
+    /**
+     * Liczba dostępnych środków przez postać
+     */
     private int dostepneSrodki;
+    /**
+     * Praca, którą posiada akutualnie postać
+     */
     private Praca praca;
+    /**
+     * Mapa dóbr posiadanych przez postać
+     */
     private HashMap<String,Dobro> listaDobr;
+    /**
+     * Mapa pożyczek posiadanych przez postać
+     */
     private HashMap<String,Pozyczka> listaPozyczek;
+    /**
+     * Lotek użytkownika
+     */
     private final Lotek lotek = new Lotek();
+    /**
+     * Ilość miesięcy przez które spełnia kryteria wygranej
+     */
     private int winningMonths = 0;
 
 
