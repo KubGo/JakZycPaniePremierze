@@ -1,5 +1,8 @@
 package com.kubago.jakzycpaniepremierze.models;
 
+import java.util.HashMap;
+import java.util.HashSet;
+
 /**
  * Podstawowa klasa Dobra które można zakupić w grze
  */
@@ -59,5 +62,26 @@ public class Dobro {
      */
     public void setMoznaSprzedac() {
         this.moznaSprzedac = true;
+    }
+
+    /**
+     * Klasa dobra luksusowego, które można sprzedać za różną cenę w zależności od wylosowanej liczby oczek
+     * Dziedziczy z klasy Dobro
+     */
+    public class DobroLuksusowe extends Dobro{
+
+        /**
+         * Ceny sprzedaży w zależności od wyrzuconej liczby oczek
+         */
+        private HashMap<Integer, Integer> ceny_sprzedazy;
+
+        /**
+         * @param cena Cena zakupu dobra
+         * @param ceny_sprzedazy Ceny sprzedaży w zależności od wyrzuconej liczby oczek
+         */
+        public DobroLuksusowe(int cena, HashMap<Integer, Integer> ceny_sprzedazy) {
+            super(cena, 0, 0);
+            this.ceny_sprzedazy = ceny_sprzedazy;
+        }
     }
 }
