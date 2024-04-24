@@ -4,6 +4,8 @@ package com.kubago.jakzycpaniepremierze.models;
  * Klasa Pożyczki którą należy spłacać co miesiąc
  */
 public class Pozyczka {
+    private static int index;
+    private String name;
     /**
      * Kwota pożyczki
      */
@@ -23,6 +25,7 @@ public class Pozyczka {
      * @param iloscRat Ilość rat do spłaty
      */
     public Pozyczka(int kwota, int rata, int iloscRat) {
+        this.name = "Pożyczka" + index++;
         this.kwota = kwota;
         this.rata = rata;
         this.iloscRat = iloscRat;
