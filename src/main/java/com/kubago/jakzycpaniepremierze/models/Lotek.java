@@ -13,6 +13,14 @@ public class Lotek {
      */
     private ArrayList<Integer> numery;
 
+
+    /**
+     * Stwórz pusty Lotek dla gracza
+     */
+    public Lotek(){
+        this(new ArrayList<>());
+    }
+
     /**
      * @param numery Lista numerów do stworzenia lotka
      */
@@ -58,5 +66,8 @@ public class Lotek {
             }
         }
         return false;
+    }
+    public void reset(){
+        this.numery = new ArrayList<>();
     }
 }
