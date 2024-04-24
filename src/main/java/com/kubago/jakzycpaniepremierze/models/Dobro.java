@@ -152,6 +152,13 @@ public class Dobro {
         }
 
         /**
+         * @return true, jeśli mieszkanie jest wynajęte
+         */
+        public boolean isWynajmowane() {
+            return wynajmowane;
+        }
+
+        /**
          * Pozbądź się najemcy i ustaw zysk na zero
          */
         public void usunNajemce(){
