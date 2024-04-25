@@ -3,7 +3,7 @@ package com.kubago.jakzycpaniepremierze;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class HelloController {
+public class JZPPController {
     @FXML
     private Label welcomeText;
 
