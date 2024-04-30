@@ -8,6 +8,24 @@ import java.util.Map;
  * Klasa postaci w którą wciela sie gracz
  */
 public class Postac {
+
+    /**
+     * Mapa z możliwymi do wyboru postaciami
+     */
+    public final static HashMap<String, Postac> WSZYSTKIE_POSTACI =
+            new HashMap<>(Map.of("Zbigniew",
+                    new Postac(
+                        "Zbigniew",
+                            Path.of("/home/kuba/IdeaProjects/JakZycPaniePremierze/src/main/resources/photos/postaci/none.png")),
+                    "Janusz",
+                        new Postac("Janusz", Path.of("/home/kuba/IdeaProjects/JakZycPaniePremierze/src/main/resources/photos/postaci/none.png")),
+                    "Maciuś", new Postac("Maciuś", Path.of("/home/kuba/IdeaProjects/JakZycPaniePremierze/src/main/resources/photos/postaci/none.png")),
+                    "Jadzia", new Postac("Jadzia", Path.of("/home/kuba/IdeaProjects/JakZycPaniePremierze/src/main/resources/photos/postaci/none.png")),
+                    "Urzędnik", new Postac("Urzędnik", Path.of("/home/kuba/IdeaProjects/JakZycPaniePremierze/src/main/resources/photos/postaci/none.png")),
+                    "Borys", new Postac("Borys", Path.of("/home/kuba/IdeaProjects/JakZycPaniePremierze/src/main/resources/photos/postaci/none.png")),
+                    "Beatka", new Postac("Beatka", Path.of("/home/kuba/IdeaProjects/JakZycPaniePremierze/src/main/resources/photos/postaci/none.png")),
+                    "Roxi", new Postac("Roxi", Path.of("/home/kuba/IdeaProjects/JakZycPaniePremierze/src/main/resources/photos/postaci/none.png"))
+            )) ;
     /**
      * Stały dzienny koszt przeżycia
      */
