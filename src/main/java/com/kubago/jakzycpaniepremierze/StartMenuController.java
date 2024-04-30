@@ -61,6 +61,13 @@ public class StartMenuController implements Initializable {
         noneUrzednik.add(noUrzednik, 2, 0, 1, 2);
         noneUrzednik.setHgap(10);
         gracze.getChildren().add(noneUrzednik);
+        Button start = new Button("Start");
+        start.setOnAction(this::zacznijGre);
+        gracze.getChildren().add(start);
+    }
+
+    private void zacznijGre(ActionEvent event) {
+        System.out.println("Gra zaczęta");
     }
 
 }
